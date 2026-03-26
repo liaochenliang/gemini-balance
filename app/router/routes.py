@@ -29,6 +29,8 @@ from app.utils.static_version import get_static_url
 logger = get_routes_logger()
 
 templates = Jinja2Templates(directory="app/templates")
+# 禁用模板缓存以避免 Jinja2 缓存键不可哈希的问题
+templates.env.cache = None
 # 设置模板全局变量
 templates.env.globals["static_url"] = get_static_url
 
